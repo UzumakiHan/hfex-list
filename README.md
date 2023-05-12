@@ -117,7 +117,8 @@ const onLoad = () => {
 ![截图示例](https://raw.githubusercontent.com/UzumakiHan/static-files/master/images/m-list.png)
 
 ### vue+ts引入提醒
-遇到这样引入有红色下划线的情况
+#### 遇到这样引入有红色下划线的情况
+
 ![截图示例](https://raw.githubusercontent.com/UzumakiHan/static-files/master/images/m-list-tip.png)
 
 在`.d.ts`中加入

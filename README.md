@@ -20,8 +20,7 @@ npm i hfex-list
 >
     <div 
     v-for="item in list" 
-    :key="item" 
-    :title="item"
+    :key="item"
     class="list"
     >
     {{ item }}
@@ -78,7 +77,7 @@ export default {
 >
 import {ref} from 'vue';
 import HfexList from 'hfex-list'; 
-const list = ref([]);
+const list = ref<Array<number>>([]);
 const flowLoading = ref(false);
 const flowFinished = ref(false);
 const flowError = ref(false);
@@ -87,11 +86,12 @@ const onLoad = () => {
     setTimeout(() => {
         flowLoading.value = false;
         for (let i = 0; i < 10; i++) {
-            this.list.push(this.list.length + 1);
+            const length= list.value.length+1
+            list.value.push(length);
         }
 
         // 数据全部加载完成
-        if (this.list.length >= 40) {
+        if (list.value.length >= 40) {
             flowFinished.value = true;
         }
                 
@@ -115,16 +115,3 @@ const onLoad = () => {
 
 ### 截图示例
 ![截图示例](https://raw.githubusercontent.com/UzumakiHan/static-files/master/images/m-list.png)
-
-### vue+ts引入提醒
-#### 遇到这样引入有红色下划线的情况
-
-![截图示例](https://raw.githubusercontent.com/UzumakiHan/static-files/master/images/m-list-tip.png)
-
-在`.d.ts`中加入
-```ts
-declare module 'hfex-list' {
-    import HfexList from 'hfex-list';
-    export default HfexList;
-}
-```

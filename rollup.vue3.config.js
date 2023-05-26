@@ -6,6 +6,7 @@ import terser from '@rollup/plugin-terser';
 import json from '@rollup/plugin-json';
 import postcss from 'rollup-plugin-postcss'
 import tsPlugin from "rollup-plugin-typescript2";
+import autoprefixer from 'autoprefixer'
 
 
 export default {
@@ -18,7 +19,7 @@ export default {
     plugins: [
         resolve(),
         tsPlugin(),
-        terser(),
+        // terser(),
         json(),
         vue3({
             css: true,
@@ -29,6 +30,8 @@ export default {
             exclude: "**/node_modules/**"
         }),
         commonjs(),
-        postcss()
+        postcss({
+            plugins:[autoprefixer()]
+        })
     ]
 }

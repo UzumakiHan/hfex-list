@@ -1,16 +1,26 @@
 {
   "name": "hfex-list",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "下拉加载更多组件",
-  "main": "dist/vue3/index.esm.js",
+  "main": "dist/vue3/index.cjs.js",
+  "module": "dist/vue3/index.esm.js",
+  "types": "./typings/typing.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/vue3/index.cjs.js",
+      "import": "./dist/vue3/index.esm.js",
+      "types": "./typings/typing.d.ts"
+    },
+    "./package.json":"./package.json"
+  },
   "scripts": {
-    "build":"npm run build:vue3 && npm run build:vue2",
-    "build:vue2": "rimraf dist/vue2/* && npm run build:umdvue2 && npm run build:esvue2 && npm run build:unpkgvue2 && npm run build:cjsvue2",
+    "build": "npm run build:vue3 && npm run build:vue2",
+    "build:vue2": "rimraf dist/vue2/* && npm run build:esvue2 && npm run build:cjsvue2",
     "build:umdvue2": "rollup -c rollup.vue2.config.js --format umd --name mList --file dist/vue2/index.umd.js",
     "build:esvue2": "rollup -c rollup.vue2.config.js --format es --file dist/vue2/index.esm.js",
     "build:unpkgvue2": "rollup -c rollup.vue2.config.js --format iife --file dist/vue2/index.min.js",
     "build:cjsvue2": "rollup -c rollup.vue2.config.js --format cjs --file dist/vue2/index.cjs.js",
-    "build:vue3": "rimraf dist/vue3/* && npm run build:umdvue3 && npm run build:esvue3 && npm run build:unpkgvue3 && npm run build:cjsvue3",
+    "build:vue3": "rimraf dist/vue3/* && npm run build:esvue3 && npm run build:cjsvue3",
     "build:umdvue3": "rollup -c rollup.vue3.config.js --format umd --name mList --file dist/vue3/index.umd.js",
     "build:esvue3": "rollup -c rollup.vue3.config.js --format es --file dist/vue3/index.esm.js",
     "build:unpkgvue3": "rollup -c rollup.vue3.config.js --format iife --file dist/vue3/index.min.js",
@@ -20,10 +30,14 @@
   "type": "module",
   "license": "ISC",
   "files": [
-    "dist"
-],
+    "dist",
+    "typings",
+    "package.json"
+  ],
   "devDependencies": {
     "@babel/core": "^7.21.8",
+    "@babel/plugin-transform-runtime": "^7.21.4",
+    "@babel/preset-env": "^7.21.5",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-json": "^6.0.0",
@@ -31,6 +45,8 @@
     "@rollup/plugin-terser": "^0.4.1",
     "@types/node": "^20.1.3",
     "@vue/compiler-sfc": "^3.3.1",
+    "autoprefixer": "^10.4.14",
+    "core-js": "^3.30.2",
     "postcss": "^8.4.23",
     "rollup": "^3.21.6",
     "rollup-plugin-postcss": "^4.0.2",
@@ -40,5 +56,13 @@
     "sass": "^1.62.1",
     "typescript": "^5.0.4",
     "vue-template-compiler": "^2.7.14"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie < 8",
+    "last 2 versions",
+    "> 1%",
+    "iOS 7",
+    "last 3 iOS versions"
+  ]
 }

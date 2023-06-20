@@ -1,6 +1,6 @@
 {
   "name": "hfex-list",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "下拉加载更多组件",
   "main": "dist/vue3/index.cjs.js",
   "module": "dist/vue3/index.esm.js",
@@ -11,7 +11,7 @@
       "import": "./dist/vue3/index.esm.js",
       "types": "./typings/typing.d.ts"
     },
-    "./package.json":"./package.json"
+    "./package.json": "./package.json"
   },
   "scripts": {
     "build": "npm run build:vue3 && npm run build:vue2",

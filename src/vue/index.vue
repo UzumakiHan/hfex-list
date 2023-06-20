@@ -11,7 +11,10 @@
                 v-if="finished"
                 class="after-trigger"
             >
-                <span class="pullup-txt">{{ finishedText }}</span>
+                <span
+                    v-if="showPullupTips"
+                    class="pullup-txt"
+                >{{ finishedText }}</span>
             </div>
             <template v-else>
                 <div
@@ -70,6 +73,10 @@ export default {
         pullupTipsBg: {
             type: String,
             default: '#f4f5f7'
+        },
+        showPullupTips: {
+            type: Boolean,
+            default: true
         }
     },
     emits: ['update:modelValue', 'load'],
@@ -84,7 +91,7 @@ export default {
             this.$emit('load');
         }
     },
-    destroyed() {
+    unmounted() {
         this.intersectionObserver.disconnect();
     },
     methods: {
@@ -111,10 +118,7 @@ export default {
 };
 </script>
 
-<style
-    lang="scss"
-    scoped
->
+<style lang="scss" scoped>
 .m-pullup {
     height: 100%;
     .pullup-tips {

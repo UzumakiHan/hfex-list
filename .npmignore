@@ -1,13 +1,21 @@
 node_modules
 
-tsconfig
+src
+
+.babelrc
 
 rollup.vue2.config.js
 
 rollup.vue3.config.js
 
-package-lock.json
-
-src
+tsconfig.json
 
 .gitignore
+
+package-lock.json
+
+pnpm-lock.yaml
+
+.github
+
+.husky

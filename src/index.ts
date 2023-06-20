@@ -1,6 +1,7 @@
-import HfexList from './vue/index.vue';
-HfexList.install = (Vue:any)=>{
-    console.log(Vue)
-    Vue.component(HfexList.name,HfexList);
-}
-export default HfexList;
+/* eslint-disable */
+import component from './vue/index.vue';
+//@ts-ignore
+component.install = vue => {
+    vue.component(component.name, component);
+};
+export default component;

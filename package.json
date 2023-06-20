@@ -11,9 +11,10 @@
       "import": "./dist/vue3/index.esm.js",
       "types": "./typings/typing.d.ts"
     },
-    "./package.json":"./package.json"
+    "./package.json": "./package.json"
   },
   "scripts": {
+    "lint-staged": "lint-staged",
     "build": "npm run build:vue3 && npm run build:vue2",
     "build:vue2": "rimraf dist/vue2/* && npm run build:esvue2 && npm run build:cjsvue2",
     "build:umdvue2": "rollup -c rollup.vue2.config.js --format umd --name mList --file dist/vue2/index.umd.js",
@@ -47,15 +48,49 @@
     "@vue/compiler-sfc": "^3.3.1",
     "autoprefixer": "^10.4.14",
     "core-js": "^3.30.2",
+    "eslint": "^8.41.0",
+    "eslint-config-hfex": "^1.1.0",
+    "hfex-prettier-config": "^1.0.0",
+    "hfex-stylelint-config": "^1.1.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "postcss": "^8.4.23",
+    "prettier": "^2.8.8",
     "rollup": "^3.21.6",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.34.1",
     "rollup-plugin-vue2": "npm:rollup-plugin-vue@^5.1.9",
     "rollup-plugin-vue3": "npm:rollup-plugin-vue@^6.0.0",
     "sass": "^1.62.1",
+    "stylelint": "^15.6.2",
     "typescript": "^5.0.4",
     "vue-template-compiler": "^2.7.14"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "hfex"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "hfex-stylelint-config/src/rules/vue"
+    ]
+  },
+  "prettier": "hfex-prettier-config",
+  "lint-staged": {
+    "src/**/*.{ts,js,json,vue,jsx,tsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "src/**/*.{html,vue,scss,css,less}": [
+      "stylelint --fix",
+      "git add"
+    ],
+    "src/**/*.{js,vue,scss,css,less,json,ts}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "browserslist": [
     "defaults",

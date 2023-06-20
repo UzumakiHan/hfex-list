@@ -1,6 +1,6 @@
 {
   "name": "hfex-list",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "下拉加载更多组件",
   "main": "dist/vue3/index.cjs.js",
   "module": "dist/vue3/index.esm.js",

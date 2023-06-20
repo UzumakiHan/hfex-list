@@ -169,9 +169,10 @@ script.render = render;
 script.__scopeId = "data-v-21fec300";
 script.__file = "src/vue/index.vue";
 
-script.install = (Vue) => {
-    console.log(Vue);
-    Vue.component(script.name, script);
+/* eslint-disable */
+//@ts-ignore
+script.install = vue => {
+    vue.component(script.name, script);
 };
 
 export { script as default };

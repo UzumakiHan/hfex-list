@@ -15,7 +15,7 @@
   },
   "scripts": {
     "lint-staged": "lint-staged",
-    "build": "npm run build:vue3 && npm run build:vue2",
+    "buildAll": "npm run build:vue3 && npm run build:vue2",
     "build:vue2": "rimraf dist/vue2/* && npm run build:esvue2 && npm run build:cjsvue2",
     "build:umdvue2": "rollup -c rollup.vue2.config.js --format umd --name mList --file dist/vue2/index.umd.js",
     "build:esvue2": "rollup -c rollup.vue2.config.js --format es --file dist/vue2/index.esm.js",
